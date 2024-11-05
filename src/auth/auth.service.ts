@@ -17,7 +17,7 @@ export class AuthService {
   ): Promise<{ access_token: string }> {
     const user = await this.usersService.findOne(username, '');
     if (!user || !bcrypt.compareSync(pass, user?.password)) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Wrong username or password');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

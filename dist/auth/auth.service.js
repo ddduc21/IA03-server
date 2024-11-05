@@ -22,7 +22,7 @@ let AuthService = class AuthService {
     async signIn(username, pass) {
         const user = await this.usersService.findOne(username, '');
         if (!user || !bcrypt.compareSync(pass, user?.password)) {
-            throw new common_1.UnauthorizedException();
+            throw new common_1.UnauthorizedException('Wrong username or password');
         }
         const { password, ...result } = user;
         const payload = { sub: user._id, username: user.username };
