@@ -3,9 +3,7 @@ export declare class AuthController {
     private authService;
     constructor(authService: AuthService);
     signIn(signInDto: Record<string, string>): Promise<{
-        username: string;
-        email: string;
-        createAt?: Date;
+        access_token: string;
     }>;
     register(registerDto: Record<string, string>): Promise<{
         password: any;
